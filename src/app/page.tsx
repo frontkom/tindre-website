@@ -1,109 +1,9 @@
 import Image from "next/image";
 
-const DEMO_URL = "https://meetings.hubspot.com/henrik-akselsen";
+import { UseCasesGrid } from "@/components/UseCasesGrid";
+import { ValuePropsGrid } from "@/components/ValuePropsGrid";
 
-const useCases = [
-  {
-    title: "Chatbot kundeservice og support",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          d="M8 12 C8 8 12 6 16 6 L32 6 C36 6 40 8 40 12 L40 28 C40 32 36 34 32 34 L20 34 L12 42 L12 34 L16 34 C12 34 8 32 8 28 Z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle cx="18" cy="20" r="2" fill="currentColor" />
-        <circle cx="24" cy="20" r="2" fill="currentColor" />
-        <circle cx="30" cy="20" r="2" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    title: "Guidet shoppingopplevelser",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          d="M12 16 L12 40 C12 42 14 44 16 44 L32 44 C34 44 36 42 36 40 L36 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M8 16 L40 16 L38 10 C38 8 36 6 34 6 L14 6 C12 6 10 8 10 10 Z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M18 6 L18 4 C18 2 20 2 22 2 L26 2 C28 2 30 2 30 4 L30 6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line x1="24" y1="22" x2="24" y2="36" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="18" y1="28" x2="30" y2="28" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    ),
-  },
-  {
-    title: "AI-basert søk på nettsiden",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="20"
-          cy="20"
-          r="14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line x1="30" y1="30" x2="44" y2="44" stroke="currentColor" strokeWidth="1.5" />
-        <path
-          d="M36 8 L38 4 M42 14 L46 12 M44 22 L48 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Automatiseringer",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="24"
-          cy="24"
-          r="6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M24 4 L24 10 M24 38 L24 44 M4 24 L10 24 M38 24 L44 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M9.86 9.86 L14.1 14.1 M33.9 33.9 L38.14 38.14 M9.86 38.14 L14.1 33.9 M33.9 14.1 L38.14 9.86"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="24"
-          cy="24"
-          r="18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-];
+const DEMO_URL = "https://meetings.hubspot.com/henrik-akselsen";
 
 const flexibilityIntegrations = [
   "Ticketsystem (ZenDesk, SocialBoards, Salesforce)",
@@ -115,146 +15,6 @@ const qualityResults = [
   "Mer presise svar",
   "Færre feil og hallusinasjoner",
   "Kontinuerlig læring basert på faktisk bruk",
-];
-
-const valueProps = [
-  {
-    text: "Øker salget",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <polyline
-          points="4 36 16 24 24 32 44 12"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <polyline
-          points="32 12 44 12 44 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    text: "Gir raskere og bedre svar til brukere",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="20"
-          cy="24"
-          r="14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <polyline
-          points="20 14 20 24 28 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path d="M34 32 L42 40" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <circle
-          cx="42"
-          cy="40"
-          r="4"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    text: "Frigjør tid hos ansatte",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="24"
-          cy="12"
-          r="8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M8 44 C8 32 16 26 24 26 C32 26 40 32 40 44"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="38"
-          cy="18"
-          r="6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <polyline
-          points="38 14 38 18 41 18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    text: "Gir innsikt i hva kundene faktisk spør om",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="20"
-          cy="20"
-          r="12"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line x1="29" y1="29" x2="42" y2="42" stroke="currentColor" strokeWidth="1.5" />
-        <polyline
-          points="12 24 16 20 20 26 28 14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    text: "Muliggjør automatisering av komplekse prosesser",
-    icon: (
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle
-          cx="24"
-          cy="24"
-          r="8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="24"
-          cy="24"
-          r="3"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line x1="24" y1="4" x2="24" y2="12" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="24" y1="36" x2="24" y2="44" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="4" y1="24" x2="12" y2="24" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="36" y1="24" x2="44" y2="24" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="24" cy="4" r="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="24" cy="44" r="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="4" cy="24" r="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="44" cy="24" r="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    ),
-  },
 ];
 
 const customers = [
@@ -362,17 +122,7 @@ export default function Page() {
 
             <div className="mx-auto mt-12 max-w-4xl">
               <h3 className="text-xl font-normal text-black">Produkter</h3>
-              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {useCases.map(({ title, icon }) => (
-                  <div
-                    key={title}
-                    className="group border border-zinc-200 bg-white p-8 transition-shadow hover:border-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)]"
-                  >
-                    <div className="h-12 w-12 text-black">{icon}</div>
-                    <div className="mt-6 text-[15px] font-normal leading-7 text-black">{title}</div>
-                  </div>
-                ))}
-              </div>
+              <UseCasesGrid />
             </div>
           </Container>
         </section>
@@ -438,18 +188,7 @@ export default function Page() {
         <section className="bg-zinc-50 py-24 sm:py-28">
           <Container>
             <SectionTitle>Slik skaper Tindre verdi</SectionTitle>
-
-            <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {valueProps.map(({ text, icon }) => (
-                <div
-                  key={text}
-                  className="border border-zinc-200 bg-transparent p-8 transition-shadow hover:border-black hover:shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
-                >
-                  <div className="h-12 w-12 text-black">{icon}</div>
-                  <p className="mt-6 text-[15px] font-normal leading-7 text-black">{text}</p>
-                </div>
-              ))}
-            </div>
+            <ValuePropsGrid />
           </Container>
         </section>
 
@@ -462,7 +201,7 @@ export default function Page() {
                 {customers.map(({ name, src }) => (
                   <div
                     key={name}
-                    className="flex flex-col items-center gap-4 text-sm font-normal tracking-[0.08em] text-zinc-500/80 transition-colors hover:text-black"
+                    className="group flex flex-col items-center gap-4 text-sm font-normal tracking-[0.08em] text-zinc-500/80 transition-colors hover:text-black"
                   >
                     <Image
                       src={src}
