@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tindre - Skreddersydde AI-agenter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --text-lighter: #999999;
+            --bg-light: #fafafa;
+            --white: #ffffff;
+            --border: #e0e0e0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 2rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.875rem 2rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--primary);
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--white);
+            color: var(--primary);
+            padding: 14rem 4rem 10rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 200;
+            margin-bottom: 2rem;
+            letter-spacing: 8px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: 4rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.25rem 3.5rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.875rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        /* Section */
+        section {
+            padding: 8rem 4rem;
+        }
+
+        section:nth-child(even) {
+            background: var(--white);
+        }
+
+        section:nth-child(odd) {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* What is Tindre */
+        .what-is {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .use-case {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 0;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .use-case:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .use-case::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .use-case-title {
+            font-weight: 400;
+            font-size: 1.0625rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature {
+            text-align: left;
+        }
+
+        .feature-icon {
+            display: none;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .feature p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .feature ul {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature li {
+            padding: 1rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 2rem;
+            font-weight: 300;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 300;
+        }
+
+        .feature-label {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary);
+            padding: 0.5rem 0;
+            border-radius: 0;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        /* Value Props */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-prop {
+            background: transparent;
+            padding: 2.5rem;
+            border-radius: 0;
+            border: 1px solid var(--border);
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .value-prop:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .value-prop::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .value-prop p {
+            font-size: 1.0625rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Customers */
+        .customers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+            padding: 4rem;
+            background: transparent;
+            border-radius: 0;
+            border: 1px solid var(--border);
+        }
+
+        .customer-logo {
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--text-light);
+            opacity: 0.5;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 1px;
+        }
+
+        .customer-logo:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--bg-light);
+            color: var(--primary);
+            text-align: center;
+            padding: 8rem 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .final-cta p {
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .final-cta .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .final-cta .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            color: var(--text-lighter);
+            padding: 3rem 4rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 0 2rem;
+            }
+
+            .hero {
+                padding: 10rem 2rem 6rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+
+            .container {
+                padding: 0 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .use-cases {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-cta {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.75rem;
+            }
+
+            .customers-grid {
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .final-cta {
+                padding: 5rem 2rem;
+            }
+
+            footer {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Tindre</div>
+            <a href="#demo" class="nav-cta">Book demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tindre</h1>
+            <h2>Skreddersydde AI-agenter</h2>
+            <p>Bygg AI-agenter for kundeservice, salg, datainnsikt og automatisering – tilpasset virksomheten din og driftet på norsk infrastruktur.</p>
+            <a href="#demo" class="cta-button">Book demo</a>
+        </div>
+    </section>
+
+    <!-- What is Tindre -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Hva er Tindre</h2>
+            <p class="section-subtitle">
+                Tindre er en plattform for å bygge, drifte og forbedre skreddersydde AI-agenter. I stedet for generiske chatbots får du brukeropplevelser som er tilpasset dine data og ditt brand.
+            </p>
+            <div class="what-is">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--text-dark);">Produkter</h3>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <div class="use-case-title">Chatbot kundeservice og support</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="use-case-title">Guidet shoppingopplevelser</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="use-case-title">AI-basert søk på nettsiden</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="use-case-title">Automatiseringer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Tindre -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Hvorfor velge Tindre</h2>
+            <div class="features">
+                <!-- Flexibility -->
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <span class="feature-label">Fleksibilitet</span>
+                    <h3>Skreddersydde brukeropplevelser og integrasjoner</h3>
+                    <p>Tindre tilpasses dine behov – ikke omvendt. Vi bygger egne grensesnitt, kobler på eksisterende systemer og setter opp agentflyter som matcher virkelige arbeidsprosesser.</p>
+                    <p style="font-weight: 600; color: var(--text-dark); margin-top: 1.5rem;">Typiske integrasjoner:</p>
+                    <ul>
+                        <li>Ticketsystem (ZenDesk, SocialBoards, Salesforce)</li>
+                        <li>CRM og kundesystemer</li>
+                        <li>API-er og interne databaser</li>
+                    </ul>
+                </div>
+
+                <!-- Quality -->
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <span class="feature-label">Kvalitet</span>
+                    <h3>Automatisert kvalitetsikring av svar</h3>
+                    <p>Svarene overvåkes, måles og forbedres kontinuerlig. Du får innsikt i hva agentene svarer, hvilke kilder som brukes og hvor kvaliteten kan forbedres.</p>
+                    <p style="font-weight: 600; color: var(--text-dark); margin-top: 1.5rem;">Resultatet er:</p>
+                    <ul>
+                        <li>Mer presise svar</li>
+                        <li>Færre feil og hallusinasjoner</li>
+                        <li>Kontinuerlig læring basert på faktisk bruk</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Creation -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Slik skaper Tindre verdi</h2>
+            <div class="value-props">
+                <div class="value-prop">
+                    <p>Øker salget</p>
+                </div>
+                <div class="value-prop">
+                    <p>Gir raskere og bedre svar til brukere</p>
+                </div>
+                <div class="value-prop">
+                    <p>Frigjør tid hos ansatte</p>
+                </div>
+                <div class="value-prop">
+                    <p>Gir innsikt i hva kundene faktisk spør om</p>
+                </div>
+                <div class="value-prop">
+                    <p>Muliggjør automatisering av komplekse prosesser</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customers -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Våre kunder</h2>
+            <div class="customers-grid">
+                <div class="customer-logo">Akademika</div>
+                <div class="customer-logo">Aller Media</div>
+                <div class="customer-logo">Tore Ligaard</div>
+                <div class="customer-logo">Oslo Nye Høyskole</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="demo">
+        <div class="container">
+            <h2>Vil du se Tindre i praksis?</h2>
+            <p>Book en demo, så viser vi hvordan Tindre kan tilpasses dine behov – med ekte data og reelle referanser.</p>
+            <a href="#" class="cta-button">Book demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Tindre. Alle rettigheter reservert.</p>
+        </div>
+    </footer>
+</body>
+</html>
