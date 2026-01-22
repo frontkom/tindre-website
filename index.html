@@ -354,6 +354,10 @@
         }
 
         .customer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
             text-align: center;
             font-size: 1.125rem;
             font-weight: 400;
@@ -363,9 +367,23 @@
             letter-spacing: 1px;
         }
 
+        .customer-logo img {
+            max-width: 120px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         .customer-logo:hover {
             opacity: 1;
             color: var(--primary);
+        }
+
+        .customer-logo:hover img {
+            filter: grayscale(0%);
         }
 
         /* Final CTA */
@@ -598,10 +616,22 @@
         <div class="container">
             <h2 class="section-title">Våre kunder</h2>
             <div class="customers-grid">
-                <div class="customer-logo">Akademika</div>
-                <div class="customer-logo">Aller Media</div>
-                <div class="customer-logo">Tore Ligaard</div>
-                <div class="customer-logo">Oslo Nye Høyskole</div>
+                <div class="customer-logo">
+                    <img src="images/logos/akademika.jpg" alt="Akademika logo">
+                    <span>Akademika</span>
+                </div>
+                <div class="customer-logo">
+                    <img src="images/logos/aller-media.jpg" alt="Aller Media logo">
+                    <span>Aller Media</span>
+                </div>
+                <div class="customer-logo">
+                    <img src="images/logos/tore-ligaard.jpg" alt="Tore Ligaard logo">
+                    <span>Tore Ligaard</span>
+                </div>
+                <div class="customer-logo">
+                    <img src="images/logos/oslo-nye-hoyskole.png" alt="Oslo Nye Høyskole logo">
+                    <span>Oslo Nye Høyskole</span>
+                </div>
             </div>
         </div>
     </section>
