@@ -210,7 +210,6 @@ export default function Page() {
                       height={60}
                       className="h-[60px] w-auto max-w-[120px] object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
                     />
-                    <span>{name}</span>
                   </div>
                 ))}
               </div>
