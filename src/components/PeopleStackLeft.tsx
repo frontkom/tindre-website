@@ -8,21 +8,46 @@ type PeopleStackLeftProps = {
 };
 
 export function PeopleStackLeft({ srcs, alt = "People" }: PeopleStackLeftProps) {
-  const [left, middle, right] = srcs;
-  if (!left || !middle || !right) return null;
+  const [first, second, third, fourth] = srcs;
+  if (!first || !second || !third || !fourth) return null;
+
+  // Same-size avatars, vertically centered, left-most on top.
+  const size = 56; // px
+  const overlap = 18; // px
+  const step = size - overlap;
 
   return (
     <div className="flex justify-start">
-      <div className="relative h-16 w-36">
-        {/* Front-most avatar should be far left */}
-        <div className="absolute left-0 top-1 z-20 size-16 overflow-hidden rounded-full border border-black/10 bg-zinc-100">
-          <Image src={left} alt={alt} fill sizes="56px" className="object-cover grayscale" />
+      <div
+        className="relative"
+        style={{
+          height: size,
+          width: size + step * 3,
+        }}
+      >
+        <div
+          className="absolute left-0 top-0 z-30 overflow-hidden rounded-full border border-black/10 bg-zinc-100"
+          style={{ height: size, width: size }}
+        >
+          <Image src={first} alt={alt} fill sizes={`${size}px`} className="object-cover grayscale" />
         </div>
-        <div className="absolute left-10 top-2 z-10 size-15 overflow-hidden rounded-full border border-black/10 bg-zinc-100">
-          <Image src={middle} alt={alt} fill sizes="60px" className="object-cover grayscale" />
+        <div
+          className="absolute top-0 z-20 overflow-hidden rounded-full border border-black/10 bg-zinc-100"
+          style={{ left: step, height: size, width: size }}
+        >
+          <Image src={second} alt={alt} fill sizes={`${size}px`} className="object-cover grayscale" />
         </div>
-        <div className="absolute left-20 top-3 z-0 size-14 overflow-hidden rounded-full border border-black/10 bg-zinc-100">
-          <Image src={right} alt={alt} fill sizes="64px" className="object-cover grayscale" />
+        <div
+          className="absolute top-0 z-10 overflow-hidden rounded-full border border-black/10 bg-zinc-100"
+          style={{ left: step * 2, height: size, width: size }}
+        >
+          <Image src={third} alt={alt} fill sizes={`${size}px`} className="object-cover grayscale" />
+        </div>
+        <div
+          className="absolute top-0 z-0 overflow-hidden rounded-full border border-black/10 bg-zinc-100"
+          style={{ left: step * 3, height: size, width: size }}
+        >
+          <Image src={fourth} alt={alt} fill sizes={`${size}px`} className="object-cover grayscale" />
         </div>
       </div>
     </div>

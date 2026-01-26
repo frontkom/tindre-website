@@ -416,7 +416,7 @@ export function BookingWidget({
                         day_button:
                           "grid size-9 cursor-pointer place-items-center border border-transparent text-sm font-semibold tracking-tight text-black hover:border-black/20 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20",
                         selected:
-                          "[&>button]:border-[#0466c8] [&>button]:bg-[#0466c8] [&>button]:text-white [&>button]:hover:border-[#0466c8] [&>button]:hover:bg-[#0466c8]",
+                          "[&>button]:border-primary [&>button]:bg-primary [&>button]:text-white [&>button]:hover:border-primary [&>button]:hover:bg-primary",
                         disabled:
                           "[&>button]:cursor-not-allowed [&>button]:text-black/20 [&>button]:hover:border-transparent [&>button]:hover:bg-transparent",
                         today: "[&>button]:border-black/10 [&>button]:bg-zinc-50",
@@ -552,9 +552,9 @@ export function BookingWidget({
                               setSelectedStart(a.startMillisUtc);
                             }}
                             className={[
-                              "w-full cursor-pointer border-2 px-4 py-3 text-left text-sm font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0466c8]/20",
+                              "w-full cursor-pointer border-2 px-4 py-3 text-left text-sm font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20",
                               isSelected
-                                ? "border-[#0466c8] bg-[#0466c8] text-white"
+                                ? "border-primary bg-primary text-white"
                                 : "border-black/10 bg-white text-black hover:border-black/30 hover:bg-zinc-50",
                             ].join(" ")}
                           >

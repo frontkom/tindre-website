@@ -3,7 +3,7 @@ import path from "node:path";
 import fs from "node:fs/promises";
 
 import { BookingWidget } from "@/components/BookingWidget";
-import { PeopleStack } from "@/components/PeopleStack";
+import { RandomPeopleStack } from "@/components/RandomPeopleStack";
 import { Container } from "@/components/blocks/Container";
 import { getMessages, hasLocale } from "@/i18n/messages";
 
@@ -14,7 +14,7 @@ async function getPeopleImages() {
     const images = files
       .filter((f) => /\.(png|jpe?g|webp|gif|avif|svg)$/i.test(f))
       .sort((a, b) => a.localeCompare(b));
-    return images.slice(0, 3).map((f) => `/images/people/${f}`);
+    return images.map((f) => `/images/people/${f}`);
   } catch {
     return [];
   }
@@ -30,7 +30,8 @@ export default async function BookPage({ params }: PageProps<"/[lang]/book">) {
     <main className="h-svh overflow-hidden pt-20">
       <Container className="max-w-xl sm:max-w-2xl h-full flex flex-col">
         <div className="flex flex-col items-center text-center">
-          <PeopleStack srcs={people} alt="Team" />
+          {/* Randomize which people show on each refresh */}
+          <RandomPeopleStack srcs={people} alt="Team" />
           <h1 className="mt-6 text-4xl font-light tracking-[-0.04em] text-black sm:text-5xl">
             {m.pages.book.title}
           </h1>

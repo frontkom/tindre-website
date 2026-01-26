@@ -47,7 +47,12 @@ function replaceFrontkomWithLogo(text: string) {
   return (
     <>
       {before}
-      <span className="inline-flex items-center align-baseline">
+      <a
+        href="https://frontkom.no"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center align-baseline hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 ring-offset-white"
+      >
         <span
           aria-hidden="true"
           className="inline-block h-[18px] w-[84px] translate-y-[3px] bg-current"
@@ -63,7 +68,7 @@ function replaceFrontkomWithLogo(text: string) {
           }}
         />
         <span className="sr-only">Frontkom</span>
-      </span>
+      </a>
       {after}
     </>
   );
@@ -76,7 +81,12 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
 
   const trustedByLogos = m.home.hero.trustedByLogos;
   const afterHero = m.home.afterHero;
-  const people = ["/images/people/ha.webp", "/images/people/pa.webp", "/images/people/tk.png"];
+  const people = [
+    "/images/people/sm.jpeg",
+    "/images/people/tk.png",
+    "/images/people/pa.webp",
+    "/images/people/ha.webp",
+  ];
 
   return (
     <div id="top" className="min-h-screen">
@@ -87,7 +97,8 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         >
           <div className="relative z-10 w-full">
             <Container>
-              <div className="mx-auto max-w-4xl text-center">
+              {/* Compensate for the brand row so hero centers as if it wasn’t included. */}
+              <div className="mx-auto max-w-4xl text-center -mb-24">
                 <h1 className="heading-hero">
                   {m.home.hero.title}
                 </h1>

@@ -61,7 +61,17 @@ export function ValuePropsGrid({ items }: ValuePropsGridProps) {
         {(shouldUsePattern ? pattern : Array.from({ length: items.length }, () => true)).map(
           (isCard, slotIdx) => {
             if (!isCard) {
-              return <div key={`empty-${slotIdx}`} aria-hidden="true" className="min-h-[168px]" />;
+              return (
+                <div
+                  key={`empty-${slotIdx}`}
+                  aria-hidden="true"
+                  className="min-h-[168px] border border-zinc-200 bg-white"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(135deg, rgba(0,0,0,0.045) 0, rgba(0,0,0,0.045) 2px, transparent 2px, transparent 10px)",
+                  }}
+                />
+              );
             }
 
             const itemIdx = shouldUsePattern
