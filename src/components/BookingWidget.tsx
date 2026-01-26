@@ -424,8 +424,12 @@ export function BookingWidget({
                       }}
                       components={{
                         Chevron: ({ orientation, ...props }) => {
-                          if (orientation === "left") return <CaretLeft aria-hidden="true" className="size-4" {...props} />;
-                          if (orientation === "right") return <CaretRight aria-hidden="true" className="size-4" {...props} />;
+                          if (orientation === "left") {
+                            return <CaretLeft aria-hidden="true" className="size-4" {...props} />;
+                          }
+                          if (orientation === "right") {
+                            return <CaretRight aria-hidden="true" className="size-4" {...props} />;
+                          }
                           return <CalendarBlank aria-hidden="true" className="size-4" {...props} />;
                         },
                       }}

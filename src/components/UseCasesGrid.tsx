@@ -50,7 +50,7 @@ export function UseCasesGrid({ items }: UseCasesGridProps) {
           return (
             <div key={title} className="flex flex-col">
               <div className="text-black">
-                <Icon size={24} weight="regular" />
+                <Icon size={24} weight="light" />
               </div>
               <div className="mt-6 text-[15px] font-semibold tracking-tight text-black">
                 {title}
