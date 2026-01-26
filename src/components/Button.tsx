@@ -45,16 +45,16 @@ export function Button(props: ButtonProps) {
 
   const base = cn(
     "group inline-flex items-center justify-center gap-[2px] border-2 text-sm font-semibold tracking-tight transition-colors",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2 ring-offset-white",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0466c8]/40 focus-visible:ring-offset-2 ring-offset-white",
     "disabled:pointer-events-none disabled:opacity-50",
     rounded ? "rounded-full" : "rounded-md",
   );
 
   const variantClass =
     variant === "primary"
-      ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
+      ? "border-[#0466c8] bg-[#0466c8] text-white hover:bg-transparent hover:text-[#0466c8]"
       : variant === "outline"
-        ? "border-black bg-transparent text-black hover:bg-black hover:text-white"
+        ? "border-[#0466c8] bg-transparent text-[#0466c8] hover:bg-[#0466c8] hover:text-white"
         : "border-transparent bg-transparent text-black hover:bg-black/5";
 
   const sizeClass =
