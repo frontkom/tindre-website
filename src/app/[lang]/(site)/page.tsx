@@ -136,7 +136,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                         item.icon && Object.prototype.hasOwnProperty.call(iconMap, item.icon)
                           ? iconMap[item.icon as keyof typeof iconMap]
                           : GearSix;
-                      return <PhosphorIcon aria-hidden="true" size={24} weight="regular" />;
+                      return <PhosphorIcon aria-hidden="true" size={24} weight="light" />;
                     })()}
                   </div>
                   <p className="text-[15px] leading-7 font-light text-zinc-700">
@@ -254,7 +254,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                           item.icon && Object.prototype.hasOwnProperty.call(iconMap, item.icon)
                             ? iconMap[item.icon as keyof typeof iconMap]
                             : GearSix;
-                        return <PhosphorIcon aria-hidden="true" size={24} weight="regular" />;
+                        return <PhosphorIcon aria-hidden="true" size={24} weight="light" />;
                       })()}
                     </div>
                     <div>
