@@ -8,11 +8,125 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-crimson-text);
+}
+
+.heading-hero {
+  color: var(--foreground);
+  font-size: 3rem; /* text-5xl */
+  font-weight: 200; /* font-extralight */
+  letter-spacing: -0.05em; /* -5% */
+  line-height: 0.85; /* 85% */
+}
+
+@media (min-width: 640px) {
+  .heading-hero {
+    font-size: 3.75rem; /* sm:text-6xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-hero {
+    font-size: 6rem; /* lg:text-8xl */
+  }
+}
+
+.heading-section {
+  color: var(--foreground);
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 300; /* font-light */
+  letter-spacing: -0.03em; /* -3% */
+  line-height: 0.9; /* 90% */
+}
+
+@media (min-width: 640px) {
+  .heading-section {
+    font-size: 2.25rem; /* sm:text-4xl */
+    letter-spacing: -0.04em; /* -4% */
+    line-height: 1.1; /* 110% */
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-section {
+    letter-spacing: -0.03em; /* -3% */
+    line-height: 1; /* 100% */
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-x 18s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  gap: var(--marquee-gap, 2rem);
+  padding-right: var(--marquee-gap, 2rem);
+}
+
+/* Fade edges so logos scroll out smoothly */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .marquee-group:last-child {
+    display: none;
+  }
 }

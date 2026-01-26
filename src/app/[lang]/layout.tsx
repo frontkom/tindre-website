@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Crimson_Text, DM_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
-import "./globals.css";
+import { getMessages, hasLocale, locales } from "@/i18n/messages";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import "../globals.css";
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
@@ -14,19 +17,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const crimsonText = Crimson_Text({
+  variable: "--font-crimson-text",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Tindre – Skreddersydde AI-agenter",
   description:
     "Bygg AI-agenter for kundeservice, salg, datainnsikt og automatisering – tilpasset virksomheten din og driftet på norsk infrastruktur.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+type LangLayoutProps = LayoutProps<"/[lang]">;
+
+export default async function LangLayout({ children, params }: LangLayoutProps) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) notFound();
+
+  // Touch messages to ensure locale is valid and typed.
+  getMessages(lang);
+
   return (
-    <html lang="no" className="scroll-smooth">
+    <html lang={lang} className="scroll-smooth">
       <head>
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -37,7 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}
+        className={`${dmSans.variable} ${geistMono.variable} ${crimsonText.variable} antialiased bg-white text-black`}
       >
         <noscript>
           <iframe
@@ -52,3 +70,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </html>
   );
 }
+
