@@ -110,7 +110,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                 </p>
 
                 <div className="mt-12 flex justify-center">
-                  <Button href={`/${lang}/book`} withArrow>
+                  <Button href="https://meetings.hubspot.com/henrik-akselsen" withArrow>
                     {m.cta.bookDemo}
                   </Button>
                 </div>
@@ -313,7 +313,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               </p>
 
               <div className="mt-10">
-                <Button href={`/${lang}/book`} withArrow>
+                <Button href="https://meetings.hubspot.com/henrik-akselsen" withArrow>
                   {m.cta.bookDemo}
                 </Button>
               </div>
