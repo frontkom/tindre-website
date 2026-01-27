@@ -10,9 +10,11 @@ type SiteHeaderProps = {
   demoUrl?: string;
 };
 
+const HUBSPOT_MEETING_URL = "https://meetings.hubspot.com/sverre-oeie/tindreintroduction";
+
 export function SiteHeader({ lang, demoUrl }: SiteHeaderProps) {
   const m = getMessages(lang);
-  const demoHref = demoUrl ?? `/${lang}/book`;
+  const demoHref = demoUrl ?? HUBSPOT_MEETING_URL;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur-xl">
