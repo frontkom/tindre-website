@@ -292,6 +292,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         </section>
 
         <CaseStudies
+          id="case-studies"
           lang={lang}
           title={m.home.caseStudies.title}
           items={m.home.caseStudies.items}

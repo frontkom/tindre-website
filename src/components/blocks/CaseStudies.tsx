@@ -36,6 +36,7 @@ export type CaseStudy = {
 };
 
 type CaseStudiesProps = {
+  id?: string;
   lang: Locale;
   title: string;
   subtitle?: string;
@@ -57,6 +58,7 @@ function resolveHref(lang: Locale, href: string) {
 }
 
 export function CaseStudies({
+  id,
   lang,
   title,
   subtitle,
@@ -66,7 +68,7 @@ export function CaseStudies({
   seeAll,
 }: CaseStudiesProps) {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section id={id} className="bg-white py-24 sm:py-28">
       <Container>
         <div className="flex items-end justify-between gap-6">
           <div>
