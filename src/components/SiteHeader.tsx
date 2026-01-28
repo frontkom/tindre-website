@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "@/components/Button";
+import { BookDemoButton } from "@/components/BookDemoButton";
 import { getMessages, type Locale } from "@/i18n/messages";
 
 // TODO(nav): Re-enable header navigation (desktop + mobile) when ready.
@@ -28,9 +28,9 @@ export function SiteHeader({ lang, demoUrl }: SiteHeaderProps) {
           </Link>
 
           <div className="flex items-center justify-end gap-3">
-            <Button href={demoHref} size="sm" withArrow>
+            <BookDemoButton href={demoHref} size="sm" withArrow>
               {m.cta.bookDemo}
-            </Button>
+            </BookDemoButton>
           </div>
         </div>
       </div>
