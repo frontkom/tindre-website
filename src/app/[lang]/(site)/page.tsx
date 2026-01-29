@@ -296,9 +296,6 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
           lang={lang}
           title={m.home.caseStudies.title}
           items={m.home.caseStudies.items}
-          // TODO(nav): Re-enable "Se alle" link for customer stories.
-          // seeAll={{ label: m.home.caseStudies.seeAll, href: "/stories" }}
-          hideItemCtas
         />
 
         <section
