@@ -78,7 +78,8 @@ function BulletList({ items }: { items: string[] }) {
 export function CaseStudyPage({ lang, content, labels, backHref }: CaseStudyPageProps) {
   return (
     <main className="min-h-screen pt-32 pb-24">
-      <Container className="max-w-4xl">
+      <Container>
+        <div className="mx-auto max-w-[600px]">
         {/* Back link */}
         <Link
           href={backHref}
@@ -223,6 +224,7 @@ export function CaseStudyPage({ lang, content, labels, backHref }: CaseStudyPage
             <BulletList items={content.successFactors} />
           </div>
         </section>
+        </div>
       </Container>
     </main>
   );
