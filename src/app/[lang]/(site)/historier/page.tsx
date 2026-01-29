@@ -5,14 +5,14 @@ import { Container } from "@/components/blocks/Container";
 import { getMessages, hasLocale } from "@/i18n/messages";
 
 export function generateStaticParams() {
-  return [{ lang: "en" }];
+  return [{ lang: "no" }];
 }
 
-export default async function StoriesPage({
+export default async function HistorierPage({
   params,
-}: PageProps<"/[lang]/stories">) {
+}: PageProps<"/[lang]/historier">) {
   const { lang } = await params;
-  if (!hasLocale(lang) || lang !== "en") notFound();
+  if (!hasLocale(lang) || lang !== "no") notFound();
 
   const m = getMessages(lang);
   const caseStudies = m.pages.caseStudies;
@@ -21,7 +21,7 @@ export default async function StoriesPage({
 
   const items = [
     {
-      kicker: "Public sector",
+      kicker: "Offentlig sektor",
       title: caseStudies.reisNordland.title,
       description: caseStudies.reisNordland.intro,
       imageSrc: caseStudies.reisNordland.imageSrc,
@@ -32,12 +32,12 @@ export default async function StoriesPage({
         : undefined,
       metrics: caseStudies.reisNordland.metrics,
       cta: {
-        label: "Read story",
-        href: "/stories/reis-nordland",
+        label: "Les kundehistorie",
+        href: "/historier/reis-nordland",
       },
     },
     {
-      kicker: "Telecom",
+      kicker: "Telekom",
       title: caseStudies.plussmobil.title,
       description: caseStudies.plussmobil.intro,
       imageSrc: caseStudies.plussmobil.imageSrc,
@@ -48,8 +48,8 @@ export default async function StoriesPage({
         : undefined,
       metrics: caseStudies.plussmobil.metrics,
       cta: {
-        label: "Read story",
-        href: "/stories/plussmobil",
+        label: "Les kundehistorie",
+        href: "/historier/plussmobil",
       },
     },
     // Akademika from home page case studies
@@ -74,4 +74,3 @@ export default async function StoriesPage({
     </main>
   );
 }
-
