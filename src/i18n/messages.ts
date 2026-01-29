@@ -247,7 +247,26 @@ export const messages = {
             ],
             cta: {
               label: "Les kundehistorie",
-              href: "https://www.ibm.com/new/product-blog/what-frontkom-learned-building-a-scalable-platform-with-ibm-for-norwegian-public-transport",
+              href: "/historier/reis-nordland",
+            },
+          },
+          {
+            kicker: "Telekom",
+            title: "Kundeservice som alltid er på jobb",
+            description:
+              "PlussMobil trengte raskt, pålitelig kundeservice uten å bygge opp stor bemanning. Frontkom leverte en AI-drevet kundeservicebot som ble satt i produksjon på få dager.",
+            quote: "PlussMobils kundeservicebot har vært en suksess fra start.",
+            quoteSource: {
+              org: "Frank Bratland, CEO",
+            },
+            imageAlt: "PlussMobil kundeservicebot",
+            imageSrc: "/images/stories/plussmobil-case.jpg",
+            metrics: [
+              { value: "1 000+", kind: "raw", label: "Samtaler per måned" },
+            ],
+            cta: {
+              label: "Les kundehistorie",
+              href: "/historier/plussmobil",
             },
           },
           {
@@ -260,10 +279,6 @@ export const messages = {
             metrics: [
               { value: "10 000 000+ produkter", kind: "raw", label: "Oppdatert hver uke" },
             ],
-            cta: {
-              label: "Les kundehistorie",
-              href: "/historier",
-            },
           },
         ],
       },
@@ -713,23 +728,38 @@ export const messages = {
             ],
             cta: {
               label: "Read story",
-              href: "https://www.ibm.com/new/product-blog/what-frontkom-learned-building-a-scalable-platform-with-ibm-for-norwegian-public-transport",
+              href: "/stories/reis-nordland",
+            },
+          },
+          {
+            kicker: "Telecom",
+            title: "Customer service that never sleeps",
+            description:
+              "PlussMobil needed fast, reliable customer service without building a large support team. Frontkom delivered an AI-powered customer service bot that went live in just a few days.",
+            quote: "PlussMobil's customer service bot has been a success from the start.",
+            quoteSource: {
+              org: "Frank Bratland, CEO",
+            },
+            imageAlt: "PlussMobil customer service bot",
+            imageSrc: "/images/stories/plussmobil-case.jpg",
+            metrics: [
+              { value: "1,000+", kind: "raw", label: "Conversations per month" },
+            ],
+            cta: {
+              label: "Read story",
+              href: "/stories/plussmobil",
             },
           },
           {
             kicker: "Ecommerce",
-            title: "Automating customer support for Norway’s largest academic bookstore",
+            title: "Automating customer support for Akademika",
             description:
-              "A customer support agent that answers questions about orders, shipping, returns, and product availability—while helping customers find the right course literature. It escalates to a human when needed and takes pressure off the support team during peak periods.",
-            imageAlt: "Customer support agent for Norway’s largest academic bookstore",
+              "A customer support agent that answers questions about orders, shipping, returns, and product availability — while helping customers find the right course literature. It escalates to a human when needed and takes pressure off the support team during peak periods.",
+            imageAlt: "Customer support agent for Norway's largest academic bookstore",
             imageSrc: "/images/stories/akademika-case.jpg",
             metrics: [
-              { value: "10 000 000+ products", kind: "raw", label: "Updated weekly" },
+              { value: "10,000,000+ products", kind: "raw", label: "Updated weekly" },
             ],
-            cta: {
-              label: "Read story",
-              href: "/stories",
-            },
           },
         ],
       },
