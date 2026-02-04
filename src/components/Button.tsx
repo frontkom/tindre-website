@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRight, CalendarCheck } from "@phosphor-icons/react";
 
 type ButtonVariant = "primary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -13,6 +13,7 @@ type SharedProps = {
   className?: string;
   rounded?: boolean;
   withArrow?: boolean;
+  withSparkle?: boolean;
   children: React.ReactNode;
 };
 
@@ -38,6 +39,7 @@ export function Button(props: ButtonProps) {
     size = "md",
     rounded = true,
     withArrow = false,
+    withSparkle = false,
     className,
     children,
     ...rest
@@ -72,30 +74,46 @@ export function Button(props: ButtonProps) {
     const target = targetProp ?? (isExternal ? "_blank" : undefined);
     const rel = relProp ?? (target === "_blank" ? "noopener noreferrer" : undefined);
 
+    const icon = withArrow ? (
+      <ArrowUpRight
+        aria-hidden="true"
+        weight="bold"
+        className="size-3 shrink-0 translate-y-px transition-transform duration-200 group-hover:-translate-y-px"
+      />
+    ) : withSparkle ? (
+      <CalendarCheck
+        aria-hidden="true"
+        weight="bold"
+        className="size-4 shrink-0"
+      />
+    ) : null;
+
     return (
       <a {...anchorProps} href={href} target={target} rel={rel} className={classes}>
         <span>{children}</span>
-        {withArrow ? (
-          <ArrowUpRight
-            aria-hidden="true"
-            weight="bold"
-            className="size-3 shrink-0 translate-y-px transition-transform duration-200 group-hover:-translate-y-px"
-          />
-        ) : null}
+        {icon}
       </a>
     );
   }
 
+  const icon = withArrow ? (
+    <ArrowUpRight
+      aria-hidden="true"
+      weight="bold"
+      className="size-3 shrink-0 translate-y-px transition-transform duration-200 group-hover:-translate-y-px"
+    />
+  ) : withSparkle ? (
+      <CalendarCheck
+        aria-hidden="true"
+        weight="bold"
+        className="size-4 shrink-0"
+      />
+    ) : null;
+
   return (
     <button {...rest} className={classes}>
       <span>{children}</span>
-      {withArrow ? (
-        <ArrowUpRight
-          aria-hidden="true"
-          weight="bold"
-          className="size-3 shrink-0 translate-y-px transition-transform duration-200 group-hover:-translate-y-px"
-        />
-      ) : null}
+      {icon}
     </button>
   );
 }

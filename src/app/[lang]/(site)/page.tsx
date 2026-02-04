@@ -110,7 +110,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                 </p>
 
                 <div className="mt-12 flex justify-center">
-                  <Button href="https://meetings.hubspot.com/sverre-oeie/tindreintroduction" withArrow>
+                  <Button href="https://meetings.hubspot.com/sverre-oeie/tindreintroduction">
                     {m.cta.bookDemo}
                   </Button>
                 </div>
@@ -139,7 +139,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               {afterHero.customerUses.items.map((item) => (
                 <div
                   key={item.text}
-                  className="flex gap-5 border border-zinc-200 bg-transparent p-8 transition-shadow hover:border-black hover:shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                  className="flex gap-5 border border-zinc-200 bg-transparent p-8"
                 >
                   <div className="shrink-0">
                     {(() => {
@@ -256,7 +256,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               {afterHero.trust.items.map((item) => (
                 <div
                   key={item.title}
-                  className="border border-zinc-200 bg-transparent p-8 transition-shadow hover:border-black hover:shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                  className="border border-zinc-200 bg-transparent p-8"
                 >
                   <div className="flex items-start gap-4">
                     <div className="shrink-0">
@@ -311,7 +311,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               </p>
 
               <div className="mt-10">
-                <Button href="https://meetings.hubspot.com/sverre-oeie/tindreintroduction" withArrow>
+                <Button href="https://meetings.hubspot.com/sverre-oeie/tindreintroduction">
                   {m.cta.bookDemo}
                 </Button>
               </div>
