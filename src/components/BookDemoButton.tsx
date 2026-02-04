@@ -8,6 +8,7 @@ type BookDemoButtonProps = {
   href: string;
   size?: "sm" | "md" | "lg";
   withArrow?: boolean;
+  withSparkle?: boolean;
   children: React.ReactNode;
 };
 
@@ -27,10 +28,11 @@ export function BookDemoButton({
   href,
   size,
   withArrow,
+  withSparkle,
   children,
 }: BookDemoButtonProps) {
   return (
-    <Button href={href} size={size} withArrow={withArrow} onClick={handleClick}>
+    <Button href={href} size={size} withArrow={withArrow} withSparkle={withSparkle} onClick={handleClick}>
       {children}
     </Button>
   );

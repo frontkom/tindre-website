@@ -276,7 +276,6 @@ export function CaseStudies({
                           href={resolveHref(lang, item.cta.href)}
                           variant="outline"
                           size="sm"
-                          withArrow
                         >
                           {item.cta.label}
                         </Button>

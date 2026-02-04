@@ -28,7 +28,7 @@ export function SiteHeader({ lang, demoUrl }: SiteHeaderProps) {
           </Link>
 
           <div className="flex items-center justify-end gap-3">
-            <BookDemoButton href={demoHref} size="sm" withArrow>
+            <BookDemoButton href={demoHref} size="sm">
               {m.cta.bookDemo}
             </BookDemoButton>
           </div>

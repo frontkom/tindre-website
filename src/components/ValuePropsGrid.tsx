@@ -45,7 +45,7 @@ export function ValuePropsGrid({ items }: ValuePropsGridProps) {
           return (
             <div
               key={text}
-              className="border border-zinc-200 bg-white p-8 transition-shadow hover:border-black hover:shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+              className="border border-zinc-200 bg-white p-8"
             >
               <div className="text-black">
                 <Icon size={48} weight="light" />
@@ -75,7 +75,7 @@ export function ValuePropsGrid({ items }: ValuePropsGridProps) {
             return (
               <div
                 key={text}
-                className="min-h-[168px] border border-zinc-200 bg-white p-8 transition-shadow hover:border-black hover:shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                className="min-h-[168px] border border-zinc-200 bg-white p-8"
               >
                 <div className="text-black">
                   <Icon size={48} weight="light" />
