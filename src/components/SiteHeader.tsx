@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { BookDemoButton } from "@/components/BookDemoButton";
@@ -23,16 +22,9 @@ export function SiteHeader({ lang, demoUrl }: SiteHeaderProps) {
         <div className="flex h-20 items-center justify-between">
           <Link
             href={`/${lang}#top`}
-            className="flex items-center text-black md:justify-self-start"
+            className="flex flex-col leading-none text-black md:justify-self-start"
           >
-            <Image
-              src="/images/logos/logo.png"
-              alt="Tindre"
-              width={120}
-              height={40}
-              className="h-16 w-auto"
-              priority
-            />
+            <span className="text-[30px] font-medium tracking-[-0.04em]">Tindre</span>
           </Link>
 
           <div className="flex items-center justify-end gap-3">
