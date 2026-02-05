@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { LanguagePicker } from "@/components/LanguagePicker";
+import { PrivacySettingsButton } from "@/components/PrivacySettingsButton";
 import { getMessages, type Locale } from "@/i18n/messages";
 
 type SiteFooterProps = {
@@ -33,9 +34,12 @@ export function SiteFooter({ lang }: SiteFooterProps) {
           </div>
         </div>
 
-        <p className="mt-10 text-center text-xs font-light tracking-[0.12em] text-zinc-400">
-          © 2026 Tindre. {m.footer.rightsReserved}
-        </p>
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <PrivacySettingsButton label={m.footer.privacySettings} />
+          <p className="text-center text-xs font-light tracking-[0.12em] text-zinc-400">
+            © 2026 Tindre. {m.footer.rightsReserved}
+          </p>
+        </div>
       </div>
     </footer>
   );

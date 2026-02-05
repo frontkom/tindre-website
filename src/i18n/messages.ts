@@ -480,6 +480,7 @@ export const messages = {
       language: "Språk",
       navigation: "Navigasjon",
       rightsReserved: "Alle rettigheter reservert.",
+      privacySettings: "Juster personverninnstillinger",
     },
     language: {
       no: "Norsk",
@@ -961,6 +962,7 @@ export const messages = {
       language: "Language",
       navigation: "Navigation",
       rightsReserved: "All rights reserved.",
+      privacySettings: "Adjust privacy settings",
     },
     language: {
       no: "Norwegian",
