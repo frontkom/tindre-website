@@ -46,6 +46,13 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   return (
     <html lang={lang} className="scroll-smooth">
       <head>
+        {/* Usercentrics Consent Management Platform */}
+        <Script
+          id="usercentrics-cmp"
+          src="https://web.cmp.usercentrics.eu/ui/loader.js"
+          data-settings-id="UikXCHujuxnLDg"
+          strategy="beforeInteractive"
+        />
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
